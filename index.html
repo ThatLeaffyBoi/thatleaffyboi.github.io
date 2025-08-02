@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>0</title>
+  <meta content="..." property="og:title" />
+  <meta content="Some things are not what they seem." property="og:description" />
+  <meta content="#9800ff" data-react-helmet="true" name="theme-color" />
+
+  <!-- Font face definition -->
+  <style>
+    @font-face {
+      font-family: 'greater-determination-sans';
+      src: url('greater-determination-sans.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-position: center;
+      background-color: #000;
+      background-image: url("Untitled1243_20241112205141.png");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: 'greater-determination-sans', sans-serif;
+    }
+
+    .center {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 48px;
+      font-family: 'greater-determination-sans', sans-serif;
+      text-align: center;
+    }
+
+    .animated-rainbow {
+      font-size: 42px;
+      background: linear-gradient(to left, #f00, #ff2b00, #f50, #ff8000, #fa0, #ffd500, #ff0, #d4ff00, #af0, #80ff00, #5f0, #2bff00, #0f0, #00ff2a, #0f5, #00ff80, #0fa, #00ffd5, #0ff, #00d5ff, #0af, #0080ff, #05f, #002aff, #00f, #2b00ff, #50f, #8000ff, #a0f, #d400ff, #f0f, #ff00d4, #f0a, #ff0080, #f05, #ff002b, #f00);
+      animation: rainbow-move-left-right 2s linear infinite normal;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-fill-color: transparent;
+    }
+
+    @keyframes rainbow-move-left-right {
+      0% { background-position: 0 0; }
+      100% { background-position: -980px 0; }
+    }
+
+    #smaller {
+      font-size: 11px;
+    }
+
+    a.bup {
+      color: white;
+      text-decoration: none;
+    }
+
+    a.bup:visited {
+      color: #ffff00;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+    Wrong Warp.<br><br>
+    <a href="https://crtweak.github.io/portal" class="bup">Wrong warp?</a> <br>
+    Wrong Warp!
+  </div>
+</body>
+</html>
