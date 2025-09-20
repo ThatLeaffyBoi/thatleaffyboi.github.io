@@ -37,14 +37,14 @@ body{
 header{position:fixed;left:0;right:0;top:0;padding:12px 18px;background:rgba(0,0,0,0.75);border-bottom:1px solid rgba(255,255,255,0.04);z-index:60}
 .header-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:12px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
-.brand img{height:42px;width:auto;border-radius:6px}
+.brand img{height:50px;width:auto;border-radius:6px}
 .brand .title{font-weight:700;font-size:14px}
 .brand .sub{font-size:11px;color:var(--muted)}
 
 nav{margin-left:auto}
 ul.nav{display:flex;gap:8px;align-items:center;margin:0;padding:0;list-style:none}
 a.nav-link{display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--white);font-weight:700;font-size:13px}
-a.nav-link:hover{color:var(--yellow)}
+a.nav-link:hover{color:var(--green)}
 a.nav-link.active{box-shadow:inset 0 -2px 0 var(--green)}
 
 main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
@@ -62,12 +62,43 @@ main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
 .proj p{margin:0;color:var(--muted);font-size:13px}
 .proj:hover{border-color:rgba(0,200,83,0.18);background:rgba(0,200,83,0.03)}
 
+.proj a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+}
+/* Regular project link hover */
+.proj a:hover {
+  color: var(--green);
+}
+
+/* Locked project styling */
+.proj.locked h4 {
+  color: red;
+  position: relative;
+  padding-right: 16px; /* space for lock icon */
+}
+
+.proj.locked h4::after {
+  content: "✗"; /* lock symbol */
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 0.9em;
+  color: red;
+}
+
+/* Locked project link hover */
+.proj.locked a:hover {
+  color: red; /* stays red on hover */
+}
+
 footer{text-align:center;margin-top:40px;color:var(--muted)}
 
 @media (max-width:880px){ ul.nav{display:none} }
 </style>
 </head>
-<body data-page="home">
+<body data-page="projects">
 <header>
 <div class="header-inner">
 <a class="brand" href="./">
@@ -98,33 +129,51 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 <section class="projects-preview">
   <div class="proj">
     <h4>DeltaLeaff Demo Version</h4>
+    <br>
     <p>Demo version of DeltaLeaff!</p>
+    <br>
+    <br>
     <a href="https://gamebanana.com/mods/485775" target="_blank" rel="noopener noreferrer">Open on GameBanana ↗</a>
   </div>
 
-  <div class="proj">
-    <h4>DeltaLeaff</h4>
-    <p>...</p>
-    <a href="deltaleaff">Visit ↗</a>
-  </div>
+<div class="proj locked">
+  <h4>DeltaLeaff</h4>
+  <br>
+  <p>...</p>
+  <br>
+  <br>
+  <!-- <a href="deltaleaff">Visit ↗</a> -->
+  <a>Coming soon...</a>
+</div>
 
-  <div class="proj">
-    <h4>Under The Castle</h4>
-    <p>Kris and Susie explore under the castle in Castle Town!</p>
-    <a href="underthecastle">Visit ↗</a>
-  </div>
+<div class="proj locked">
+  <h4>Under The Castle</h4>
+  <br>
+  <p>Kris and Susie explore under</p>
+  <p>the castle in Castle Town!</p>
+  <br>
+  <!-- <a href="underthecastle">Visit ↗</a> -->
+  <a>Coming soon...</a>
+</div>
 
-  <div class="proj">
-    <h4>Deltarune: A Natural World</h4>
-    <p>Leaff makes a Dark World in his house!</p>
-    <a href="naturalworld">Visit ↗</a>
-  </div>
+<div class="proj locked">
+  <h4>Deltarune: A Natural World</h4>
+  <p>Leaff makes a Dark World</p>
+  <p>in his house!</p>
+  <br>
+  <!-- <a href="naturalworld">Visit ↗</a> -->
+  <a>Coming soon...</a>
+</div>
 
-  <div class="proj">
-    <h4>Checklist Maker</h4>
-    <p>My own checklist maker that I made.</p>
-    <a href="checklist">Visit ↗</a>
-  </div>
+<div class="proj locked">
+  <h4>Checklist Maker</h4>
+  <br>
+  <p>My own checklist</p>
+  <p>maker that I made.</p>
+  <br>
+  <!-- <a href="checklist">Visit ↗</a> -->
+  <a>Coming soon...</a>
+</div>
 </section>
 
 <footer>
@@ -135,7 +184,7 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 <script>
   // Automatically set the green underline for the current page
   (function() {
-    const page = document.body.dataset.page || 'home';
+    const page = document.body.dataset.page || 'projects';
     document.querySelectorAll('.nav-link').forEach(a => {
       if(a.dataset.nav === page) a.classList.add('active');
     });
