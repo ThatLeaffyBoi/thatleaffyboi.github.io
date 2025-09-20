@@ -1,79 +1,309 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>0</title>
-  <meta content="..." property="og:title" />
-  <meta content="Some things are not what they seem." property="og:description" />
-  <meta content="#9800ff" data-react-helmet="true" name="theme-color" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Home</title>
+  <meta name="description" content="Some things are not what they seem." />
+  <meta property="og:title" content="Your Name — Projects & Portfolio" />
+  <meta property="og:description" content="Bio, projects, and FAQ." />
+  <meta name="theme-color" content="#9800ff" />
 
-  <!-- Font face definition -->
+  <!-- local custom font (optional) -->
   <style>
     @font-face {
       font-family: 'greater-determination-sans';
-      src: url('greater-determination-sans.ttf') format('truetype');
-      font-weight: normal;
+      src: url('assets/greater-determination-sans.ttf') format('truetype');
+      font-weight: 400;
       font-style: normal;
+      font-display: swap;
+    }
+  </style>
+
+  <style>
+    :root{
+      --bg:#050507;
+      --card:#0f0f13;
+      --muted:#cfd6e3;
+      --accent:#9800ff;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --gap:18px;
     }
 
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--muted);
+      font-family:'greater-determination-sans',system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+      background-image: url('assets/background.png');
+      background-size: cover;
       background-position: center;
-      background-color: #000;
-      background-image: url("Untitled1243_20241112205141.png");
-      background-repeat: no-repeat;
       background-attachment: fixed;
-      font-family: 'greater-determination-sans', sans-serif;
     }
 
-    .center {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 48px;
-      font-family: 'greater-determination-sans', sans-serif;
-      text-align: center;
+    /* Header / Nav */
+    header.site-header{
+      position:fixed;left:0;right:0;top:0;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.10));
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      z-index: 60;
+    }
+    .header-inner{
+      max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:12px;
+    }
+    a.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    img#logo{height:42px;width:auto;display:block;border-radius:8px}
+    .brand h1{font-size:16px;margin:0;letter-spacing:0.6px}
+
+    nav.nav{
+      margin-left:auto;
+    }
+    ul.nav-list{list-style:none;margin:0;padding:0;display:flex;gap:10px;align-items:center}
+    .nav-list a{
+      display:inline-block;padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--muted);
+      font-weight:600;font-size:15px;
+    }
+    .nav-list a:hover,.nav-list a:focus{outline:none;background:var(--glass);color:white}
+    .nav-list a.active{background:linear-gradient(90deg,var(--accent),#0066ff);color:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+
+    /* Mobile menu button */
+    button#menuBtn{
+      display:none;margin-left:10px;background:transparent;border:1px solid rgba(255,255,255,0.05);padding:8px;border-radius:8px;color:var(--muted);
     }
 
-    .animated-rainbow {
-      font-size: 42px;
-      background: linear-gradient(to left, #f00, #ff2b00, #f50, #ff8000, #fa0, #ffd500, #ff0, #d4ff00, #af0, #80ff00, #5f0, #2bff00, #0f0, #00ff2a, #0f5, #00ff80, #0fa, #00ffd5, #0ff, #00d5ff, #0af, #0080ff, #05f, #002aff, #00f, #2b00ff, #50f, #8000ff, #a0f, #d400ff, #f0f, #ff00d4, #f0a, #ff0080, #f05, #ff002b, #f00);
-      animation: rainbow-move-left-right 2s linear infinite normal;
+    /* Page content */
+    main{padding-top:82px;max-width:1100px;margin:0 auto;padding-left:20px;padding-right:20px;padding-bottom:80px}
+    section{margin: 36px 0;padding:22px;background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:12px; }
+
+    /* Hero */
+    .hero{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:36px}
+    .hero h2{font-size:34px;margin:0;color:white}
+    .hero p.lead{margin:0;color: #dbe6ff;max-width:70ch;line-height:1.5}
+    .hero .cta-row{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;text-decoration:none;font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#0066ff);color:white;box-shadow:0 8px 30px rgba(153,0,255,0.15)}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    /* Projects grid */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:12px}
+    .project-card{
+      display:flex;flex-direction:column;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);text-decoration:none;color:var(--muted);transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .project-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
+    .project-card h3{margin:0 0 6px 0;color:white}
+    .project-card p{margin:0 0 10px 0;font-size:13px;color:#c5d2ff}
+    .project-meta{margin-top:auto;display:flex;gap:8px;align-items:center;font-size:13px;color:#9fb0ff}
+
+    /* FAQ */
+    details{margin-bottom:10px}
+    summary{cursor:pointer;font-weight:700}
+    details p{margin:8px 0 0 0;color:#dbe6ff}
+
+    footer{color:#9faec9;text-align:center;padding:28px;font-size:13px}
+
+    /* Rainbow headline (subtle) */
+    .rainbow {
+      display:inline-block;
+      background-image: linear-gradient(90deg,#ff0000,#ff8a00,#ffd500,#00d5ff,#2b00ff,#ff00d4);
+      background-size: 400% 100%;
       -webkit-background-clip: text;
       background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-fill-color: transparent;
+      color: transparent;
+      animation: rainbow 6s linear infinite;
+      font-weight:800;
+    }
+    @keyframes rainbow{0%{background-position:0%}100%{background-position:100%}}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .nav-list{display:none}
+      button#menuBtn{display:inline-block}
+      header.site-header{padding:6px 0}
+      .hero h2{font-size:28px}
     }
 
-    @keyframes rainbow-move-left-right {
-      0% { background-position: 0 0; }
-      100% { background-position: -980px 0; }
+    /* mobile nav open */
+    .mobile-nav{
+      position: fixed; inset:64px 20px auto 20px; background:var(--card); padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.04); display:none;
+      box-shadow: 0 12px 50px rgba(0,0,0,0.6);
     }
-
-    #smaller {
-      font-size: 11px;
-    }
-
-    a.bup {
-      color: white;
-      text-decoration: none;
-    }
-
-    a.bup:visited {
-      color: #ffff00;
-    }
+    .mobile-nav.show{display:block}
+    .mobile-nav a{display:block;padding:10px;border-radius:8px;text-decoration:none;color:var(--muted)}
+    .mobile-nav a.active{background:linear-gradient(90deg,var(--accent),#0066ff);color:white}
   </style>
 </head>
 <body>
-  <div class="center">
-    Wrong Warp.<br><br>
-    <a href="https://crtweak.github.io/portal" class="bup">Wrong warp?</a> <br>
-    Wrong Warp!
-  </div>
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="Go to home">
+        <img id="logo" src="assets/logo.png" alt="Logo (replace assets/logo.png)" />
+        <div>
+          <h1>Your Name</h1>
+          <div style="font-size:11px;margin-top:2px;color:var(--muted)">maker • dev • storyteller</div>
+        </div>
+      </a>
+
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <ul class="nav-list" id="navList">
+          <li><a class="nav-link active" href="#home">Home</a></li>
+          <li><a class="nav-link" href="#projects">Projects</a></li>
+          <li><a class="nav-link" href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <button id="menuBtn" aria-expanded="false" aria-controls="mobileNav" title="Menu">☰</button>
+    </div>
+
+    <!-- simple mobile nav -->
+    <div id="mobileNav" class="mobile-nav" role="menu" aria-hidden="true">
+      <a href="#home" class="mobile-link">Home</a>
+      <a href="#projects" class="mobile-link">Projects</a>
+      <a href="#faq" class="mobile-link">FAQ</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero" tabindex="-1">
+      <h2><span class="rainbow">Wrong Warp.</span> — Hello, I'm Your Name</h2>
+      <p class="lead">
+        Short bio / overview goes here. What you do, the things you're proud of, and one-line elevator pitch.
+        Example: "I build surreal, narrative games and cute tools — currently focused on DeltaLeaff and small prototypes."
+      </p>
+
+      <div class="cta-row">
+        <a href="#projects" class="btn btn-primary">See Projects</a>
+        <a href="#faq" class="btn btn-ghost">Read FAQ</a>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projectsHeading">
+      <h3 id="projectsHeading" style="margin:0 0 6px 0">Projects</h3>
+      <p style="margin:0 0 12px 0;color:#bfcffb">Click a card to open the project (edit links in <code>projects</code> array in the bottom script).</p>
+
+      <div class="projects-grid" id="projectsGrid">
+        <!-- JS will render project cards here -->
+      </div>
+    </section>
+
+    <section id="faq" aria-labelledby="faqHeading">
+      <h3 id="faqHeading">FAQ</h3>
+
+      <details>
+        <summary>What is DeltaLeaff?</summary>
+        <p>DeltaLeaff is my surreal, choice-driven RPG inspired by Deltarune. Replace this with your real description.</p>
+      </details>
+
+      <details>
+        <summary>How can I run your demos?</summary>
+        <p>Put short instructions here: required engine, how to download, or links to the demo pages/repositories.</p>
+      </details>
+
+      <details>
+        <summary>How do I contact you?</summary>
+        <p>Mention your preferred contact method (email, socials, GitHub). Or link to a contact form.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div>Made with 💜 — Put your socials or small copyright here.</div>
+  </footer>
+
+  <script>
+    /* ---------- Projects data
+       Edit these entries with URLs & descriptions.
+    ---------- */
+    const projects = [
+      { title: "DeltaLeaff Demo Version", desc: "A playable demo for DeltaLeaff.", url: "#" },
+      { title: "DeltaLeaff", desc: "The full surreal RPG in development.", url: "#" },
+      { title: "Under The Castle", desc: "A story-driven game / project.", url: "#" },
+      { title: "Deltarune: A Natural World", desc: "A fan-ish project / concept.", url: "#" },
+      { title: "Checklist Maker", desc: "Small productivity web app.", url: "#" },
+    ];
+
+    /* Render project cards */
+    const grid = document.getElementById('projectsGrid');
+    function renderProjects(list){
+      grid.innerHTML = '';
+      for(const p of list){
+        const a = document.createElement('a');
+        a.className = 'project-card';
+        a.href = p.url || '#';
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.innerHTML = `
+          <h3>${escapeHtml(p.title)}</h3>
+          <p>${escapeHtml(p.desc || '')}</p>
+          <div class="project-meta">Open ↗</div>
+        `;
+        grid.appendChild(a);
+      }
+    }
+
+    /* small HTML escaper to avoid accidental html injection */
+    function escapeHtml(s = '') {
+      return String(s).replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]);
+    }
+
+    renderProjects(projects);
+
+    /* ---------- Mobile menu toggle ---------- */
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn.addEventListener('click', () => {
+      const shown = mobileNav.classList.toggle('show');
+      mobileNav.setAttribute('aria-hidden', String(!shown));
+      menuBtn.setAttribute('aria-expanded', String(shown));
+    });
+
+    /* close mobile nav when a link is clicked */
+    document.querySelectorAll('.mobile-link').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileNav.classList.remove('show');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ---------- Smooth scroll for nav links ---------- */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if(!href || href === '#') return;
+        const el = document.querySelector(href);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth',block:'start'});
+          // move focus for accessibility
+          window.setTimeout(()=>{ el.focus({preventScroll:true}); }, 600);
+        }
+      });
+    });
+
+    /* ---------- Scroll spy for active nav link using IntersectionObserver ---------- */
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = Array.from(document.querySelectorAll('main section[id]'));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        const link = document.querySelector('.nav-list a[href="#' + id + '"]');
+        if(link){
+          if(entry.isIntersecting){
+            navLinks.forEach(n => n.classList.remove('active'));
+            link.classList.add('active');
+          }
+        }
+      });
+    }, { root: null, rootMargin: '-40% 0px -40% 0px', threshold: 0 });
+
+    sections.forEach(s => observer.observe(s));
+
+    /* optional: keyboard close mobile nav with Escape */
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape'){ mobileNav.classList.remove('show'); menuBtn.setAttribute('aria-expanded','false'); }
+    });
+
+  </script>
 </body>
 </html>
