@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>LeaffyBoi — Home</title>
-<meta name="description" content="LeaffyBoi — home menu" />
+<title>LeaffyBoi — FAQ</title>
+<meta name="description" content="LeaffyBoi — frequently asked questions" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <link href="assets/greater-determination-sans.ttf" rel="stylesheet">
 <style>
@@ -54,7 +54,7 @@ main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
 
 .cta{margin-top:20px;display:flex;gap:12px}
 .btn{padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--white)}
-.btn:hover{color:var(--green);border-color:var(--green);background:rgba(0,200,83,0.03)}
+.btn:hover{color:var(--yellow);border-color:var(--green);background:rgba(0,200,83,0.03)}
 
 .projects-preview{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
 .proj{padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--white);text-decoration:none}
@@ -62,12 +62,43 @@ main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
 .proj p{margin:0;color:var(--muted);font-size:13px}
 .proj:hover{border-color:rgba(0,200,83,0.18);background:rgba(0,200,83,0.03)}
 
+.proj a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+}
+/* Regular project link hover */
+.proj a:hover {
+  color: var(--green);
+}
+
+/* Locked project styling */
+.proj.locked h4 {
+  color: red;
+  position: relative;
+  padding-right: 16px; /* space for lock icon */
+}
+
+.proj.locked h4::after {
+  content: "✗"; /* lock symbol */
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 0.9em;
+  color: red;
+}
+
+/* Locked project link hover */
+.proj.locked a:hover {
+  color: red; /* stays red on hover */
+}
+
 footer{text-align:center;margin-top:40px;color:var(--muted)}
 
 @media (max-width:880px){ ul.nav{display:none} }
 </style>
 </head>
-<body data-page="home">
+<body data-page="faq">
 <header>
 <div class="header-inner">
 <a class="brand" href="./">
@@ -80,9 +111,9 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 
 <nav aria-label="Main navigation">
 <ul class="nav">
-<li><a class="nav-link" data-nav="home" href="./">Home</a></li>
+<li><a class="nav-link" data-nav="home" href="../">Home</a></li>
 <li><a class="nav-link" data-nav="projects" href="./projects/">Projects</a></li>
-<li><a class="nav-link" data-nav="faq" href="./faq/">FAQ</a></li>
+<li><a class="nav-link" data-nav="faq" href="./">FAQ</a></li>
 </ul>
 </nav>
 </div>
@@ -90,13 +121,8 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 
 <main>
 <section class="hero">
-<h1 class="title">Home</h1>
-<p class="lead">Hiya my BROSKIS!!! I'm Leaff, or LeaffyBoi, or ThatLeaffyBoi!</p>
-
-<div class="cta">
-<a class="btn" href="./projects/">View Projects</a>
-<a class="btn" href="./faq/">FAQ</a>
-</div>
+<h1 class="title">FAQ</h1>
+<p class="lead">Here are some frequently asked questions and their answers.</p>
 </section>
 
 <footer>
@@ -107,7 +133,7 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 <script>
   // Automatically set the green underline for the current page
   (function() {
-    const page = document.body.dataset.page || 'home';
+    const page = document.body.dataset.page || 'faq';
     document.querySelectorAll('.nav-link').forEach(a => {
       if(a.dataset.nav === page) a.classList.add('active');
     });
