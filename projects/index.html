@@ -98,50 +98,38 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 @media (max-width:880px){ ul.nav{display:none} }
 </style>
 </head>
+<body data-page="projects">
+
 <script>
-  // Preload the sounds
+  // Preload the UI sounds
   const sounds = {
     move: new Audio('assets/sounds/ui_move.wav'),
     select: new Audio('assets/sounds/ui_select.wav'),
     cant: new Audio('assets/sounds/ui_cant_select.wav')
   };
 
-  // Play a sound function
   function playSound(sound) {
     if (sound && sound.play) {
-      sound.currentTime = 0; // rewind to start
+      sound.currentTime = 0;
       sound.play();
     }
   }
 
-  // Navigation links
-  document.querySelectorAll('.nav-link').forEach(link => {
-    // Hover
-    link.addEventListener('mouseenter', () => {
-      playSound(sounds.move);
+  document.addEventListener("DOMContentLoaded", () => {
+    // Nav link sounds
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('mouseenter', () => playSound(sounds.move));
+      link.addEventListener('click', () => playSound(sounds.select));
     });
 
-    // Click
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      if (!href || href === '#' || href === '') {
-        // Invalid link
-        e.preventDefault();
-        playSound(sounds.cant);
-      } else {
-        playSound(sounds.select);
-      }
+    // Button sounds
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('mouseenter', () => playSound(sounds.move));
+      btn.addEventListener('click', () => playSound(sounds.select));
     });
-  });
-
-  // Buttons
-  document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('mouseenter', () => playSound(sounds.move));
-    btn.addEventListener('click', () => playSound(sounds.select));
   });
 </script>
 
-<body data-page="projects">
 <header>
 <div class="header-inner">
 <a class="brand" href="./">
