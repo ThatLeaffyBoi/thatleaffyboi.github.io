@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wrong Warp — Projects</title>
+  <meta name="description" content="Projects and demos by LeaffyBoi" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000;
+      --green: #00c853;
+      --yellow: #ffd400;
+      --white: #ffffff;
+      --muted: #9fb0b0;
+      --maxw: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; background: var(--bg); color: var(--white); }
+
+    header { position: fixed; top: 0; left: 0; right: 0; padding: 12px 18px; background: rgba(0,0,0,0.75); border-bottom: 1px solid rgba(255,255,255,0.04); z-index: 60; }
+    .header-inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; gap: 12px; }
+    .brand img { height: 42px; }
+
+    nav { margin-left: auto; }
+    ul.nav { display: flex; gap: 8px; align-items: center; margin: 0; padding: 0; list-style: none; }
+    a.nav-link { display: inline-block; padding: 8px 12px; border-radius: 8px; text-decoration: none; color: var(--white); font-weight: 700; font-size: 13px; }
+    a.nav-link:hover { color: var(--yellow); }
+    a.nav-link.active { box-shadow: inset 0 -2px 0 var(--green); }
+
+    main { max-width: var(--maxw); margin: 110px auto 80px; padding: 0 20px; }
+    h1 { margin: 0 0 8px 0; }
+    .lead { color: var(--muted); margin: 0 0 18px 0; }
+
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .card { padding: 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.04); background: transparent; }
+    .card h3 { margin: 0 0 6px 0; }
+    .card p { margin: 0; color: var(--muted); }
+    .card a.visit { display: inline-block; margin-top: 10px; font-weight: 700; color: var(--white); text-decoration: none; }
+    .card a.visit:hover { color: var(--yellow); }
+
+    footer { text-align: center; margin-top: 40px; color: var(--muted); }
+  </style>
+</head>
+<body data-page="projects">
+  <header>
+    <div class="header-inner">
+      <a class="brand" href="../">
+        <img src="../assets/logo.png" alt="logo">
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav">
+          <li><a class="nav-link" data-nav="home" href="../">Home</a></li>
+          <li><a class="nav-link" data-nav="projects" href="./">Projects</a></li>
+          <li><a class="nav-link" data-nav="faq" href="../faq/">FAQ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>Projects</h1>
+    <p class="lead">Collection of work, demos, and prototypes.</p>
+
+    <div class="projects-grid">
+      <div class="card">
+        <h3>DeltaLeaff Demo Version</h3>
+        <p>Playable demo / mod hosted on GameBanana (Kristal mod).</p>
+        <a class="visit" href="https://gamebanana.com/mods/485775" target="_blank" rel="noopener noreferrer">Open on GameBanana ↗</a>
+      </div>
+
+      <div class="card">
+        <h3>DeltaLeaff</h3>
+        <p>The full surreal RPG in progress. More info coming soon.</p>
+        <a class="visit" href="#">Visit ↗</a>
+      </div>
+
+      <div class="card">
+        <h3>Under The Castle</h3>
+        <p>Story-driven experimental prototype.</p>
+        <a class="visit" href="#">Visit ↗</a>
+      </div>
+
+      <div class="card">
+        <h3>Deltarune: A Natural World</h3>
+        <p>A fan project inspired by Deltarune with natural themes.</p>
+        <a class="visit" href="#">Visit ↗</a>
+      </div>
+
+      <div class="card">
+        <h3>Checklist Maker</h3>
+        <p>Small productivity web tool.</p>
+        <a class="visit" href="#">Visit ↗</a>
+      </div>
+    </div>
+
+    <footer>
+      <div>Made with 💚 — replace with socials or copyright info.</div>
+    </footer>
+  </main>
+
+  <script>
+    (function() {
+      const page = document.body.dataset.page || 'projects';
+      document.querySelectorAll('.nav-link').forEach(a => {
+        if(a.dataset.nav === page) a.classList.add('active');
+        a.addEventListener('mouseover', ()=> a.style.color = 'var(--yellow)');
+        a.addEventListener('mouseout', ()=> a.style.color = '');
+      });
+    })();
+  </script>
+</body>
+</html>
