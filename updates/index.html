@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>LeaffyBoi — FAQ</title>
-<meta name="description" content="LeaffyBoi — frequently asked questions" />
+<title>LeaffyBoi — Updates</title>
+<meta name="description" content="LeaffyBoi — updates and progress logs" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <link href="assets/greater-determination-sans.ttf" rel="stylesheet">
+
 <style>
 @font-face {
     font-family: 'Greater Determination Sans';
@@ -15,7 +16,7 @@
     font-style: normal;
 }
 
-:root{
+:root {
   --bg:#000000;
   --green:#00c853;
   --yellow:#ffd400;
@@ -27,7 +28,7 @@
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
 body{
-  font-family: 'Greater Determination Sans', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  font-family:'Greater Determination Sans', Inter, system-ui, -apple-system,"Segoe UI",Roboto,Arial;
   background:var(--bg);
   color:var(--white);
   -webkit-font-smoothing:antialiased;
@@ -52,14 +53,9 @@ main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
 .title{font-size:44px;font-weight:800;letter-spacing:2px;margin:0}
 .lead{margin-top:14px;color:var(--muted);max-width:70ch;font-size:15px;line-height:1.6}
 
-.cta{margin-top:20px;display:flex;gap:12px}
-.btn{padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--white)}
-.btn:hover{color:var(--green);border-color:var(--green);background:rgba(0,200,83,0.03)}
-
-.faq-content h2 {
-  color: var(--green);
-}
-
+.update-entry{margin-bottom:40px}
+.update-entry h2{color:var(--green);margin-bottom:8px;font-size:22px}
+.update-entry p{color:var(--white);margin:0 0 6px 0;font-size:14px;line-height:1.6}
 
 footer{text-align:center;margin-top:40px;color:var(--muted)}
 
@@ -67,34 +63,20 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 </style>
 </head>
 
-<body data-page="faq">
+<body data-page="updates">
 
 <script>
-  // Preload the UI sounds
   const sounds = {
     move: new Audio('assets/sounds/ui_move.wav'),
     select: new Audio('assets/sounds/ui_select.wav'),
     cant: new Audio('assets/sounds/ui_cant_select.wav')
   };
-
-  function playSound(sound) {
-    if (sound && sound.play) {
-      sound.currentTime = 0;
-      sound.play();
-    }
-  }
+  function playSound(sound){ if(sound&&sound.play){ sound.currentTime=0; sound.play(); } }
 
   document.addEventListener("DOMContentLoaded", () => {
-    // Nav link sounds
     document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('mouseenter', () => playSound(sounds.move));
-      link.addEventListener('click', () => playSound(sounds.select));
-    });
-
-    // Button sounds
-    document.querySelectorAll('.btn').forEach(btn => {
-      btn.addEventListener('mouseenter', () => playSound(sounds.move));
-      btn.addEventListener('click', () => playSound(sounds.select));
+      link.addEventListener('mouseenter',()=>playSound(sounds.move));
+      link.addEventListener('click',()=>playSound(sounds.select));
     });
   });
 </script>
@@ -122,37 +104,34 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 
 <main>
 <section class="hero">
-<h1 class="title">FAQ</h1>
-<p class="lead">Here are some frequently asked questions, or questions you may have, and their answers.</p>
+<h1 class="title">Updates</h1>
+<p class="lead">Track the progress of DeltaLeaff and other projects here.</p>
 </section>
 
-<section class="faq-content">
-  <div>
-    <h2>When's DeltaLeaff's first chapter going to release?</h2>
-    <p>Um... Soon...</p>
+<section class="updates-list">
+  <div class="update-entry">
+    <h2>September 20, 2025</h2>
+    <p>Added the FAQ page and linked it across the site. Updates page now live!</p>
   </div>
-  <div>
-    <h2>How many chapters does DeltaLeaff have?</h2>
-    <p>Originally during the first concepts, it was 55. Yeah, 55 chapters, and it was for a while. But during recent development, it's been reduced to 25. Still considerably a lot for DELTARUNE fangame, but hey that should be fine right?</p>
-  </div>
-  <div>
-    <h2>What's the progress on DeltaLeaff so far?</h2>
-    <p>Check the updates page <a href="/updates/">here</a>.</p>
+
+  <div class="update-entry">
+    <h2>September 18, 2025</h2>
+    <p>Projects page launched with first listed works and navigation improvements.</p>
   </div>
 </section>
 
 <footer>
   <div>Made with love and endurance!</div>
 </footer>
+</main>
 
 <script>
-  // Set the green underline on the current nav item
-  (function() {
-    const page = document.body.dataset.page || 'faq';
-    document.querySelectorAll('.nav-link').forEach(a => {
-      if(a.dataset.nav === page) a.classList.add('active');
-    });
-  })();
+(function() {
+  const page = document.body.dataset.page || 'updates';
+  document.querySelectorAll('.nav-link').forEach(a => {
+    if(a.dataset.nav === page) a.classList.add('active');
+  });
+})();
 </script>
 
 </body>
