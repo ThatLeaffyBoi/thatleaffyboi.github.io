@@ -7,89 +7,63 @@
   <meta name="description" content="Some things are not what they seem." />
   <meta property="og:title" content="Wrong Warp — Projects & Portfolio" />
   <meta property="og:description" content="Bio, projects, and FAQ." />
-  <meta name="theme-color" content="#9800ff" />
+  <meta name="theme-color" content="#000000" />
 
-  <!-- Fonts: press-start-2p for the big retro title, Inter for body -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
-
-  <!--
-    Deltarune-inspired single-file starter.
-    Drop this as `index.html` at your repo root and add an `assets/` folder with `logo.png` and `bg.png` (or change paths below).
-  -->
+  <!-- Single font for everything -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg-1: #06000b;      /* deep space */
-      --bg-2: #0b0020;      /* purple wash */
-      --accent: #9800ff;    /* purple */
-      --accent-2: #00d5ff;  /* cyan */
-      --muted: #cfe0ff;
-      --glass: rgba(255,255,255,0.03);
+      --bg: #000000;            /* primary: black (used the most) */
+      --accent-green: #00c853; /* primary accent (green) */
+      --hover-yellow: #ffd400; /* hovered button text */
+      --text: #ffffff;         /* normal text */
+      --muted: #9fb0b0;
       --card: rgba(255,255,255,0.02);
       --maxw: 1100px;
     }
 
-    /* Reset & base */
+    /* Reset + base */
     *{box-sizing:border-box}
     html,body{height:100%;margin:0}
     body{
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      color:var(--muted);
-      background: radial-gradient(1200px 600px at 10% 20%, rgba(152,0,255,0.12), transparent),
-                  radial-gradient(900px 400px at 90% 80%, rgba(0,213,255,0.06), transparent),
-                  linear-gradient(180deg,var(--bg-1),var(--bg-2));
-      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+      background:var(--bg);
+      color:var(--text);
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
       min-height:100vh;
-      overflow-x:hidden;
     }
-
-    /* subtle moving stars layer */
-    body::before{
-      content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-      background-image: radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,0.06) 0%, transparent 40%),
-                        radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.05) 0%, transparent 40%),
-                        radial-gradient(1.5px 1.5px at 70% 40%, rgba(255,255,255,0.04) 0%, transparent 40%);
-      background-size: 1200px 800px, 800px 600px, 1500px 1000px;
-      animation: star-move 60s linear infinite;
-      mix-blend-mode: screen;opacity:0.9;
-    }
-    @keyframes star-move{from{background-position:0 0,0 0,0 0}to{background-position:-2000px 1000px,800px -600px,-1200px 600px}}
 
     /* Header */
-    header{position:fixed;left:0;right:0;top:0;z-index:40;padding:14px 20px;backdrop-filter:blur(6px);}
+    header{position:fixed;left:0;right:0;top:0;z-index:60;padding:12px 18px;background:rgba(0,0,0,0.6);border-bottom:1px solid rgba(255,255,255,0.03)}
     .header-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:12px}
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
-    .brand img{height:44px;width:auto;border-radius:8px}
-    .brand .title{font-weight:800;letter-spacing:1px;font-size:13px}
+    .brand img{height:44px;width:auto;border-radius:6px}
+    .brand .title{font-weight:700;font-size:14px}
+
     nav{margin-left:auto}
     ul.nav{display:flex;gap:8px;align-items:center;margin:0;padding:0;list-style:none}
-    a.nav-link{display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:700;font-size:13px}
-    a.nav-link:hover{background:var(--glass);color:#fff}
-    a.nav-link.active{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+    a.nav-link{display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--text);font-weight:700;font-size:13px}
+    a.nav-link:hover, a.nav-link:focus{color:var(--hover-yellow);outline:none}
+    a.nav-link.active{color:var(--text);box-shadow:inset 0 -2px 0 var(--accent-green)}
 
     /* Mobile menu */
-    #menuBtn{display:none;background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px;border-radius:10px;color:var(--muted)}
+    #menuBtn{display:none;background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px;border-radius:10px;color:var(--text)}
     .mobile-nav{display:none}
 
-    /* Main layout */
-    main{position:relative;z-index:10;max-width:var(--maxw);margin:120px auto 80px;padding:0 20px}
+    /* Main */
+    main{position:relative;z-index:10;max-width:var(--maxw);margin:100px auto 80px;padding:0 20px}
 
-    /* Hero (DELTARUNE-like) */
-    .hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:80px 22px;border-radius:12px}
-    .logo-title{font-family: 'Press Start 2P', cursive;font-size:54px;line-height:1;text-transform:uppercase;color:#fff;letter-spacing:6px;margin:0}
-    .logo-title .glow{display:inline-block;text-shadow:0 10px 40px rgba(152,0,255,0.28),0 2px 8px rgba(0,0,0,0.6)}
+    /* Hero */
+    .hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:72px 22px;border-radius:12px}
+    .logo-title{font-size:48px;line-height:1;margin:0;font-weight:800;letter-spacing:2px}
+    .subtitle{margin-top:14px;color:var(--muted);max-width:70ch;font-size:15px;line-height:1.6}
+    .cta{margin-top:20px;display:flex;gap:12px}
 
-    .subtitle{margin-top:18px;color: #cbdcff;max-width:70ch;font-size:15px;line-height:1.6}
-    .hero .cta{margin-top:20px;display:flex;gap:12px}
-    .btn{padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:800}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}
-    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
-
-    /* little scanline & glitch effect on heading */
-    .scanline{position:relative;overflow:hidden}
-    .scanline::after{
-      content:"";position:absolute;left:-30%;top:0;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.03),transparent);transform:skewX(-20deg);animation:scan 4s linear infinite}
-    @keyframes scan{0%{left:-60%}50%{left:100%}100%{left:100%}}
+    /* Buttons (hover changes text to yellow) */
+    .btn{padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text);display:inline-flex;align-items:center;gap:10px}
+    .btn:hover{color:var(--hover-yellow);border-color:var(--accent-green);background:rgba(0,200,83,0.06)}
+    .btn:focus{outline:2px solid rgba(0,200,83,0.14)}
 
     /* Sections */
     section{margin-top:36px;padding:18px;background:transparent}
@@ -97,27 +71,27 @@
 
     /* Projects grid */
     .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:12px}
-    .project{padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:linear-gradient(180deg,rgba(255,255,255,0.012),transparent);text-decoration:none;color:var(--muted);display:flex;flex-direction:column}
-    .project h4{margin:0 0 8px 0;color:white;font-size:15px}
-    .project p{margin:0 0 10px 0;font-size:13px;color:#c6d6ff}
-    .project .meta{margin-top:auto;font-size:13px;color:#9fb0ff}
+    .project{padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;text-decoration:none;color:var(--text);display:flex;flex-direction:column}
+    .project h4{margin:0 0 8px 0;font-size:15px}
+    .project p{margin:0 0 10px 0;font-size:13px;color:var(--muted)}
+    .project .meta{margin-top:auto;font-size:13px;color:var(--muted)}
+    .project:hover{border-color:rgba(0,200,83,0.18);background:rgba(0,200,83,0.03)}
 
     /* FAQ */
-    details{background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);margin-bottom:10px}
-    summary{cursor:pointer;font-weight:800}
-    details p{margin:8px 0 0 0;color:#cfe0ff}
+    details{padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);margin-bottom:10px}
+    summary{cursor:pointer;font-weight:700}
+    details p{margin:8px 0 0 0;color:var(--muted)}
 
-    footer{text-align:center;margin-top:40px;color:#9fb0ff}
+    footer{text-align:center;margin-top:40px;color:var(--muted)}
 
-    /* Responsive */
+    /* Responsive tweaks */
     @media (max-width:880px){
       .logo-title{font-size:28px}
       ul.nav{display:none}
       #menuBtn{display:inline-block}
-      .mobile-nav{display:block;position:fixed;top:64px;right:20px;background:rgba(10,6,20,0.95);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);}
-      .mobile-nav a{display:block;padding:8px;color:var(--muted);text-decoration:none}
+      .mobile-nav{display:block;position:fixed;top:64px;right:20px;background:rgba(0,0,0,0.95);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+      .mobile-nav a{display:block;padding:8px;color:var(--text);text-decoration:none}
     }
-
   </style>
 </head>
 <body>
@@ -151,17 +125,17 @@
 
   <main>
     <section id="home" class="hero" tabindex="-1">
-      <h1 class="logo-title scanline"><span class="glow">Wrong Warp</span></h1>
+      <h1 class="logo-title">Wrong Warp</h1>
       <p class="subtitle">Some things are not what they seem. I build surreal, narrative games and small tools — currently working on DeltaLeaff and other projects.</p>
       <div class="cta">
-        <a class="btn btn-primary" href="#projects">Projects</a>
-        <a class="btn btn-ghost" href="#faq">FAQ</a>
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#faq">FAQ</a>
       </div>
     </section>
 
     <section id="projects">
       <h2 style="margin:0 0 8px 0">Projects</h2>
-      <p style="margin:0 0 12px 0;color:#bfcffb">Click a project to open it. Edit the `projects` array near the bottom of this file to change links and descriptions.</p>
+      <p style="margin:0 0 12px 0;color:var(--muted)">Click a project to open it. Edit the <code>projects</code> array near the bottom of this file to change links and descriptions.</p>
       <div class="projects-grid" id="projectsGrid"></div>
     </section>
 
@@ -185,14 +159,14 @@
     </section>
 
     <footer>
-      <div>Made with 💜 — Put your socials or copyright here.</div>
+      <div>Made with 💚 — Put your socials or copyright here.</div>
     </footer>
   </main>
 
   <script>
-    // Projects array — update links and descriptions here
+    // Projects array — updated with your Deltaleaff demo link
     const projects = [
-      { title: 'DeltaLeaff Demo Version', desc: 'A playable demo for DeltaLeaff.', url: '#' },
+      { title: 'DeltaLeaff Demo Version', desc: 'A mod/demo released on GameBanana (Kristal mod).', url: 'https://gamebanana.com/mods/485775' },
       { title: 'DeltaLeaff', desc: 'The full surreal RPG in development.', url: '#' },
       { title: 'Under The Castle', desc: 'A story-driven game / project.', url: '#' },
       { title: 'Deltarune: A Natural World', desc: 'A fan-ish project / concept.', url: '#' },
@@ -251,7 +225,7 @@
     }, {root:null, rootMargin:'-40% 0px -40% 0px', threshold:0});
     sections.forEach(s=>io.observe(s));
 
-    // small accessibility nicety: allow ESC to close mobile nav
+    // allow ESC to close mobile nav
     document.addEventListener('keydown', e => { if(e.key === 'Escape'){ mobileNav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); } });
   </script>
 </body>
