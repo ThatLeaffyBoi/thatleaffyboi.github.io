@@ -3,307 +3,256 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Your Name — Home</title>
+  <title>Wrong Warp — Portfolio</title>
   <meta name="description" content="Some things are not what they seem." />
-  <meta property="og:title" content="Your Name — Projects & Portfolio" />
+  <meta property="og:title" content="Wrong Warp — Projects & Portfolio" />
   <meta property="og:description" content="Bio, projects, and FAQ." />
   <meta name="theme-color" content="#9800ff" />
 
-  <!-- local custom font (optional) -->
-  <style>
-    @font-face {
-      font-family: 'greater-determination-sans';
-      src: url('assets/greater-determination-sans.ttf') format('truetype');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-  </style>
+  <!-- Fonts: press-start-2p for the big retro title, Inter for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!--
+    Deltarune-inspired single-file starter.
+    Drop this as `index.html` at your repo root and add an `assets/` folder with `logo.png` and `bg.png` (or change paths below).
+  -->
 
   <style>
     :root{
-      --bg:#050507;
-      --card:#0f0f13;
-      --muted:#cfd6e3;
-      --accent:#9800ff;
-      --glass: rgba(255,255,255,0.04);
-      --radius:14px;
-      --gap:18px;
+      --bg-1: #06000b;      /* deep space */
+      --bg-2: #0b0020;      /* purple wash */
+      --accent: #9800ff;    /* purple */
+      --accent-2: #00d5ff;  /* cyan */
+      --muted: #cfe0ff;
+      --glass: rgba(255,255,255,0.03);
+      --card: rgba(255,255,255,0.02);
+      --maxw: 1100px;
     }
 
+    /* Reset & base */
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:var(--bg);color:var(--muted);
-      font-family:'greater-determination-sans',system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+    html,body{height:100%;margin:0}
+    body{
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--muted);
+      background: radial-gradient(1200px 600px at 10% 20%, rgba(152,0,255,0.12), transparent),
+                  radial-gradient(900px 400px at 90% 80%, rgba(0,213,255,0.06), transparent),
+                  linear-gradient(180deg,var(--bg-1),var(--bg-2));
       -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-      background-image: url('assets/background.png');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      min-height:100vh;
+      overflow-x:hidden;
     }
 
-    /* Header / Nav */
-    header.site-header{
-      position:fixed;left:0;right:0;top:0;
-      backdrop-filter: blur(6px);
-      background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.10));
-      border-bottom: 1px solid rgba(255,255,255,0.03);
-      z-index: 60;
+    /* subtle moving stars layer */
+    body::before{
+      content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+      background-image: radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,0.06) 0%, transparent 40%),
+                        radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.05) 0%, transparent 40%),
+                        radial-gradient(1.5px 1.5px at 70% 40%, rgba(255,255,255,0.04) 0%, transparent 40%);
+      background-size: 1200px 800px, 800px 600px, 1500px 1000px;
+      animation: star-move 60s linear infinite;
+      mix-blend-mode: screen;opacity:0.9;
     }
-    .header-inner{
-      max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:12px;
-    }
-    a.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
-    img#logo{height:42px;width:auto;display:block;border-radius:8px}
-    .brand h1{font-size:16px;margin:0;letter-spacing:0.6px}
+    @keyframes star-move{from{background-position:0 0,0 0,0 0}to{background-position:-2000px 1000px,800px -600px,-1200px 600px}}
 
-    nav.nav{
-      margin-left:auto;
-    }
-    ul.nav-list{list-style:none;margin:0;padding:0;display:flex;gap:10px;align-items:center}
-    .nav-list a{
-      display:inline-block;padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--muted);
-      font-weight:600;font-size:15px;
-    }
-    .nav-list a:hover,.nav-list a:focus{outline:none;background:var(--glass);color:white}
-    .nav-list a.active{background:linear-gradient(90deg,var(--accent),#0066ff);color:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+    /* Header */
+    header{position:fixed;left:0;right:0;top:0;z-index:40;padding:14px 20px;backdrop-filter:blur(6px);}
+    .header-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .brand img{height:44px;width:auto;border-radius:8px}
+    .brand .title{font-weight:800;letter-spacing:1px;font-size:13px}
+    nav{margin-left:auto}
+    ul.nav{display:flex;gap:8px;align-items:center;margin:0;padding:0;list-style:none}
+    a.nav-link{display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:700;font-size:13px}
+    a.nav-link:hover{background:var(--glass);color:#fff}
+    a.nav-link.active{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
 
-    /* Mobile menu button */
-    button#menuBtn{
-      display:none;margin-left:10px;background:transparent;border:1px solid rgba(255,255,255,0.05);padding:8px;border-radius:8px;color:var(--muted);
-    }
+    /* Mobile menu */
+    #menuBtn{display:none;background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px;border-radius:10px;color:var(--muted)}
+    .mobile-nav{display:none}
 
-    /* Page content */
-    main{padding-top:82px;max-width:1100px;margin:0 auto;padding-left:20px;padding-right:20px;padding-bottom:80px}
-    section{margin: 36px 0;padding:22px;background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:12px; }
+    /* Main layout */
+    main{position:relative;z-index:10;max-width:var(--maxw);margin:120px auto 80px;padding:0 20px}
 
-    /* Hero */
-    .hero{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:36px}
-    .hero h2{font-size:34px;margin:0;color:white}
-    .hero p.lead{margin:0;color: #dbe6ff;max-width:70ch;line-height:1.5}
-    .hero .cta-row{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;text-decoration:none;font-weight:700}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),#0066ff);color:white;box-shadow:0 8px 30px rgba(153,0,255,0.15)}
+    /* Hero (DELTARUNE-like) */
+    .hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:80px 22px;border-radius:12px}
+    .logo-title{font-family: 'Press Start 2P', cursive;font-size:54px;line-height:1;text-transform:uppercase;color:#fff;letter-spacing:6px;margin:0}
+    .logo-title .glow{display:inline-block;text-shadow:0 10px 40px rgba(152,0,255,0.28),0 2px 8px rgba(0,0,0,0.6)}
+
+    .subtitle{margin-top:18px;color: #cbdcff;max-width:70ch;font-size:15px;line-height:1.6}
+    .hero .cta{margin-top:20px;display:flex;gap:12px}
+    .btn{padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:800}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}
     .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
 
+    /* little scanline & glitch effect on heading */
+    .scanline{position:relative;overflow:hidden}
+    .scanline::after{
+      content:"";position:absolute;left:-30%;top:0;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.03),transparent);transform:skewX(-20deg);animation:scan 4s linear infinite}
+    @keyframes scan{0%{left:-60%}50%{left:100%}100%{left:100%}}
+
+    /* Sections */
+    section{margin-top:36px;padding:18px;background:transparent}
+    .card{background:var(--card);border-radius:12px;padding:14px;border:1px solid rgba(255,255,255,0.03)}
+
     /* Projects grid */
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:12px}
-    .project-card{
-      display:flex;flex-direction:column;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.03);text-decoration:none;color:var(--muted);transition:transform .2s ease, box-shadow .2s ease;
-    }
-    .project-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
-    .project-card h3{margin:0 0 6px 0;color:white}
-    .project-card p{margin:0 0 10px 0;font-size:13px;color:#c5d2ff}
-    .project-meta{margin-top:auto;display:flex;gap:8px;align-items:center;font-size:13px;color:#9fb0ff}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:12px}
+    .project{padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:linear-gradient(180deg,rgba(255,255,255,0.012),transparent);text-decoration:none;color:var(--muted);display:flex;flex-direction:column}
+    .project h4{margin:0 0 8px 0;color:white;font-size:15px}
+    .project p{margin:0 0 10px 0;font-size:13px;color:#c6d6ff}
+    .project .meta{margin-top:auto;font-size:13px;color:#9fb0ff}
 
     /* FAQ */
-    details{margin-bottom:10px}
-    summary{cursor:pointer;font-weight:700}
-    details p{margin:8px 0 0 0;color:#dbe6ff}
+    details{background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);margin-bottom:10px}
+    summary{cursor:pointer;font-weight:800}
+    details p{margin:8px 0 0 0;color:#cfe0ff}
 
-    footer{color:#9faec9;text-align:center;padding:28px;font-size:13px}
-
-    /* Rainbow headline (subtle) */
-    .rainbow {
-      display:inline-block;
-      background-image: linear-gradient(90deg,#ff0000,#ff8a00,#ffd500,#00d5ff,#2b00ff,#ff00d4);
-      background-size: 400% 100%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: rainbow 6s linear infinite;
-      font-weight:800;
-    }
-    @keyframes rainbow{0%{background-position:0%}100%{background-position:100%}}
+    footer{text-align:center;margin-top:40px;color:#9fb0ff}
 
     /* Responsive */
     @media (max-width:880px){
-      .nav-list{display:none}
-      button#menuBtn{display:inline-block}
-      header.site-header{padding:6px 0}
-      .hero h2{font-size:28px}
+      .logo-title{font-size:28px}
+      ul.nav{display:none}
+      #menuBtn{display:inline-block}
+      .mobile-nav{display:block;position:fixed;top:64px;right:20px;background:rgba(10,6,20,0.95);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);}
+      .mobile-nav a{display:block;padding:8px;color:var(--muted);text-decoration:none}
     }
 
-    /* mobile nav open */
-    .mobile-nav{
-      position: fixed; inset:64px 20px auto 20px; background:var(--card); padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.04); display:none;
-      box-shadow: 0 12px 50px rgba(0,0,0,0.6);
-    }
-    .mobile-nav.show{display:block}
-    .mobile-nav a{display:block;padding:10px;border-radius:8px;text-decoration:none;color:var(--muted)}
-    .mobile-nav a.active{background:linear-gradient(90deg,var(--accent),#0066ff);color:white}
   </style>
 </head>
 <body>
-  <header class="site-header" role="banner">
+  <header>
     <div class="header-inner">
-      <a class="brand" href="#home" aria-label="Go to home">
-        <img id="logo" src="assets/logo.png" alt="Logo (replace assets/logo.png)" />
+      <a class="brand" href="#home" aria-label="Go home">
+        <img src="assets/logo.png" alt="logo (replace assets/logo.png)">
         <div>
-          <h1>Your Name</h1>
-          <div style="font-size:11px;margin-top:2px;color:var(--muted)">maker • dev • storyteller</div>
+          <div class="title">Wrong Warp</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px">maker • dev • storyteller</div>
         </div>
       </a>
 
-      <nav class="nav" role="navigation" aria-label="Main navigation">
-        <ul class="nav-list" id="navList">
+      <nav aria-label="Main navigation">
+        <ul class="nav">
           <li><a class="nav-link active" href="#home">Home</a></li>
           <li><a class="nav-link" href="#projects">Projects</a></li>
           <li><a class="nav-link" href="#faq">FAQ</a></li>
         </ul>
       </nav>
 
-      <button id="menuBtn" aria-expanded="false" aria-controls="mobileNav" title="Menu">☰</button>
+      <button id="menuBtn" aria-controls="mobileNav" aria-expanded="false">☰</button>
     </div>
 
-    <!-- simple mobile nav -->
-    <div id="mobileNav" class="mobile-nav" role="menu" aria-hidden="true">
-      <a href="#home" class="mobile-link">Home</a>
-      <a href="#projects" class="mobile-link">Projects</a>
-      <a href="#faq" class="mobile-link">FAQ</a>
+    <div id="mobileNav" class="mobile-nav" aria-hidden="true">
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#faq">FAQ</a>
     </div>
   </header>
 
   <main>
     <section id="home" class="hero" tabindex="-1">
-      <h2><span class="rainbow">Wrong Warp.</span> — Hello, I'm Your Name</h2>
-      <p class="lead">
-        Short bio / overview goes here. What you do, the things you're proud of, and one-line elevator pitch.
-        Example: "I build surreal, narrative games and cute tools — currently focused on DeltaLeaff and small prototypes."
-      </p>
-
-      <div class="cta-row">
-        <a href="#projects" class="btn btn-primary">See Projects</a>
-        <a href="#faq" class="btn btn-ghost">Read FAQ</a>
+      <h1 class="logo-title scanline"><span class="glow">Wrong Warp</span></h1>
+      <p class="subtitle">Some things are not what they seem. I build surreal, narrative games and small tools — currently working on DeltaLeaff and other projects.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#projects">Projects</a>
+        <a class="btn btn-ghost" href="#faq">FAQ</a>
       </div>
     </section>
 
-    <section id="projects" aria-labelledby="projectsHeading">
-      <h3 id="projectsHeading" style="margin:0 0 6px 0">Projects</h3>
-      <p style="margin:0 0 12px 0;color:#bfcffb">Click a card to open the project (edit links in <code>projects</code> array in the bottom script).</p>
-
-      <div class="projects-grid" id="projectsGrid">
-        <!-- JS will render project cards here -->
-      </div>
+    <section id="projects">
+      <h2 style="margin:0 0 8px 0">Projects</h2>
+      <p style="margin:0 0 12px 0;color:#bfcffb">Click a project to open it. Edit the `projects` array near the bottom of this file to change links and descriptions.</p>
+      <div class="projects-grid" id="projectsGrid"></div>
     </section>
 
-    <section id="faq" aria-labelledby="faqHeading">
-      <h3 id="faqHeading">FAQ</h3>
+    <section id="faq">
+      <h2 style="margin:0 0 8px 0">FAQ</h2>
 
       <details>
         <summary>What is DeltaLeaff?</summary>
-        <p>DeltaLeaff is my surreal, choice-driven RPG inspired by Deltarune. Replace this with your real description.</p>
+        <p>DeltaLeaff is a surreal, choice-driven RPG I'm building. Replace this text with your official description.</p>
       </details>
 
       <details>
-        <summary>How can I run your demos?</summary>
-        <p>Put short instructions here: required engine, how to download, or links to the demo pages/repositories.</p>
+        <summary>How do I run your demos?</summary>
+        <p>Provide engine info or links to playable builds. Example: download the ZIP and open <code>index.html</code> or run the build in the supplied engine.</p>
       </details>
 
       <details>
-        <summary>How do I contact you?</summary>
-        <p>Mention your preferred contact method (email, socials, GitHub). Or link to a contact form.</p>
+        <summary>How can I contact you?</summary>
+        <p>Link to email/GitHub/Twitter here. Consider a separate contact form if you want to avoid scraping.</p>
       </details>
     </section>
+
+    <footer>
+      <div>Made with 💜 — Put your socials or copyright here.</div>
+    </footer>
   </main>
 
-  <footer>
-    <div>Made with 💜 — Put your socials or small copyright here.</div>
-  </footer>
-
   <script>
-    /* ---------- Projects data
-       Edit these entries with URLs & descriptions.
-    ---------- */
+    // Projects array — update links and descriptions here
     const projects = [
-      { title: "DeltaLeaff Demo Version", desc: "A playable demo for DeltaLeaff.", url: "#" },
-      { title: "DeltaLeaff", desc: "The full surreal RPG in development.", url: "#" },
-      { title: "Under The Castle", desc: "A story-driven game / project.", url: "#" },
-      { title: "Deltarune: A Natural World", desc: "A fan-ish project / concept.", url: "#" },
-      { title: "Checklist Maker", desc: "Small productivity web app.", url: "#" },
+      { title: 'DeltaLeaff Demo Version', desc: 'A playable demo for DeltaLeaff.', url: '#' },
+      { title: 'DeltaLeaff', desc: 'The full surreal RPG in development.', url: '#' },
+      { title: 'Under The Castle', desc: 'A story-driven game / project.', url: '#' },
+      { title: 'Deltarune: A Natural World', desc: 'A fan-ish project / concept.', url: '#' },
+      { title: 'Checklist Maker', desc: 'Small productivity web app.', url: '#' }
     ];
 
-    /* Render project cards */
+    // render project cards
     const grid = document.getElementById('projectsGrid');
     function renderProjects(list){
       grid.innerHTML = '';
-      for(const p of list){
+      list.forEach(p => {
         const a = document.createElement('a');
-        a.className = 'project-card';
+        a.className = 'project';
         a.href = p.url || '#';
         a.target = '_blank';
         a.rel = 'noopener noreferrer';
-        a.innerHTML = `
-          <h3>${escapeHtml(p.title)}</h3>
-          <p>${escapeHtml(p.desc || '')}</p>
-          <div class="project-meta">Open ↗</div>
-        `;
+        a.innerHTML = `\n          <h4>${escapeHtml(p.title)}</h4>\n          <p>${escapeHtml(p.desc || '')}</p>\n          <div class=\"meta\">Open ↗</div>\n        `;
         grid.appendChild(a);
-      }
+      });
     }
 
-    /* small HTML escaper to avoid accidental html injection */
-    function escapeHtml(s = '') {
-      return String(s).replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]);
-    }
-
+    function escapeHtml(s=''){ return String(s).replace(/[&<>\"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'})[m] ); }
     renderProjects(projects);
 
-    /* ---------- Mobile menu toggle ---------- */
+    // mobile menu toggle
     const menuBtn = document.getElementById('menuBtn');
     const mobileNav = document.getElementById('mobileNav');
     menuBtn.addEventListener('click', () => {
-      const shown = mobileNav.classList.toggle('show');
-      mobileNav.setAttribute('aria-hidden', String(!shown));
-      menuBtn.setAttribute('aria-expanded', String(shown));
+      const open = mobileNav.classList.toggle('open');
+      mobileNav.setAttribute('aria-hidden', String(!open));
+      menuBtn.setAttribute('aria-expanded', String(open));
     });
+    document.querySelectorAll('#mobileNav a').forEach(a => a.addEventListener('click', ()=>{ mobileNav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); }));
 
-    /* close mobile nav when a link is clicked */
-    document.querySelectorAll('.mobile-link').forEach(a => {
-      a.addEventListener('click', () => {
-        mobileNav.classList.remove('show');
-        menuBtn.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    /* ---------- Smooth scroll for nav links ---------- */
+    // smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', (e) => {
+      a.addEventListener('click', (e)=>{
         const href = a.getAttribute('href');
         if(!href || href === '#') return;
         const el = document.querySelector(href);
-        if(el){
-          e.preventDefault();
-          el.scrollIntoView({behavior:'smooth',block:'start'});
-          // move focus for accessibility
-          window.setTimeout(()=>{ el.focus({preventScroll:true}); }, 600);
-        }
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'}); window.setTimeout(()=>el.focus({preventScroll:true}),600); }
       });
     });
 
-    /* ---------- Scroll spy for active nav link using IntersectionObserver ---------- */
+    // simple scrollspy
+    const sections = document.querySelectorAll('main section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-    const sections = Array.from(document.querySelectorAll('main section[id]'));
-    const observer = new IntersectionObserver((entries) => {
+    const io = new IntersectionObserver((entries)=>{
       entries.forEach(entry => {
-        const id = entry.target.id;
-        const link = document.querySelector('.nav-list a[href="#' + id + '"]');
-        if(link){
-          if(entry.isIntersecting){
-            navLinks.forEach(n => n.classList.remove('active'));
-            link.classList.add('active');
-          }
+        if(entry.isIntersecting){
+          navLinks.forEach(n => n.classList.remove('active'));
+          const link = document.querySelector('.nav-link[href="#'+entry.target.id+'"]');
+          if(link) link.classList.add('active');
         }
       });
-    }, { root: null, rootMargin: '-40% 0px -40% 0px', threshold: 0 });
+    }, {root:null, rootMargin:'-40% 0px -40% 0px', threshold:0});
+    sections.forEach(s=>io.observe(s));
 
-    sections.forEach(s => observer.observe(s));
-
-    /* optional: keyboard close mobile nav with Escape */
-    document.addEventListener('keydown', (e) => {
-      if(e.key === 'Escape'){ mobileNav.classList.remove('show'); menuBtn.setAttribute('aria-expanded','false'); }
-    });
-
+    // small accessibility nicety: allow ESC to close mobile nav
+    document.addEventListener('keydown', e => { if(e.key === 'Escape'){ mobileNav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); } });
   </script>
 </body>
 </html>
