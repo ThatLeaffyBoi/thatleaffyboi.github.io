@@ -58,6 +58,22 @@ main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
 .update-entry h2{color:var(--green);margin-bottom:8px;font-size:22px}
 .update-entry p{color:var(--white);margin:0 0 6px 0;font-size:14px;line-height:1.6}
 
+.updates-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  align-items: stretch; /* <-- this makes both columns stretch to the same height */
+  margin-top: 40px;
+}
+.updates-list {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 200, 83, 0.05); /* optional, just for visual clarity */
+  padding: 16px;
+  border-radius: 12px;
+}
+
+
 footer{text-align:center;margin-top:40px;color:var(--muted)}
 
 @media (max-width:880px){ ul.nav{display:none} }
@@ -109,11 +125,39 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 <p class="lead">Updates of projects, the site, life, and some other stuff!</p>
 </section>
 
-<section class="updates-list">
-  <div class="update-entry">
-    <h2>September 21, 2025</h2>
-    <p>The release of the website! Everything seems finished!</p>
+<section class="updates-container" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:40px; margin-top:40px;">
+  
+  <!-- DeltaLeaff Updates -->
+  <div class="updates-list">
+    <h2 style="color:var(--green); margin-bottom:16px;">DeltaLeaff Updates</h2>
+    <div class="update-entry">
+      <h3>March 5, 2024</h3>
+      <p>DeltaLeaff Demo Version (1.0.0) is updated to DeltaLeaff Demo Version (1.2.0) and released to the public!</p>
+    </div>
+    <div class="update-entry">
+      <h3>December 24, 2023</h3>
+      <p>DeltaLeaff Demo Version (1.0.0) is released to the public!</p>
+    </div>
   </div>
+
+  <!-- Project Updates -->
+  <div class="updates-list">
+    <h2 style="color:var(--yellow); margin-bottom:16px;">Projects' Updates</h2>
+    <div class="update-entry">
+      <h3></h3>
+      <p></p>
+    </div>
+  </div>
+
+  <!-- Other Updates -->
+  <div class="updates-list">
+    <h2 style="color:var(--yellow); margin-bottom:16px;">Other Updates</h2>
+    <div class="update-entry">
+      <h3>September 21, 2025</h3>
+      <p>The website design was finalized and uploaded.</p>
+    </div>
+  </div>
+
 </section>
 
 <footer>
