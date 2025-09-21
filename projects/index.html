@@ -66,8 +66,10 @@ main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
 .projects-preview {
   margin-top: 28px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(640px, 1fr));
+  grid-template-columns: repeat(3, 400px); /* fixed width for each card */
   gap: 40px;
+  justify-content: center; /* center the whole grid */
+  border-radius: 10px;
 }
 
 .proj {
@@ -86,11 +88,10 @@ main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
 }
 
 .proj-img {
-  width: 100%;
-  border-radius: 8px;
+  width: 30%;
+  border-radius: 2px;
   margin-bottom: 10px;
   object-fit: cover;
-  aspect-ratio: 16/9;
 }
 
 
@@ -129,7 +130,7 @@ main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
 .proj p.desc {
   font-size: 16px;
   color: var(--white);
-  line-height: 4;
+  line-height: 1.5;
 }
 
 .proj p.note {
@@ -200,49 +201,58 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 </section>
 
 <section class="projects-preview">
-  <div class="proj">
-    <h4>DeltaLeaff Demo Version</h4>
-    <p class="note">Demo version of DeltaLeaff!</p>
-    <img src="assets/demo_logo.png" alt="DeltaLeaff Demo" class="proj-img">
-    <img src="assets/cottonforest.png" alt="DeltaLeaff Demo" class="proj-img">
-    <img src="assets/racket.png" alt="DeltaLeaff Demo" class="proj-img">
-    <img src="assets/battle.png" alt="DeltaLeaff Demo" class="proj-img">
-    <img src="assets/shop.png" alt="DeltaLeaff Demo" class="proj-img">
-    <p class="desc">A demo version of DeltaLeaff, the fangame based on DELTARUNE using the Kristal Engine. This is an outdated version of the game, so it's not something to note in correspondence with any new information.</p>
-    <a href="https://gamebanana.com/mods/485775" target="_blank" rel="noopener noreferrer">Open on GameBanana ↗</a>
-  </div>
-
 <div class="proj locked">
   <h4>DeltaLeaff</h4>
   <p class="note">...</p>
-  <p class="desc">...</p>
   <!-- <a href="deltaleaff">Visit ↗</a> -->
   <a>Coming soon...</a>
+  <p class="desc">DeltaLeaff's full game in the form of 25 chapters.</p>
 </div>
+
+  <div class="proj">
+    <h4>DeltaLeaff Demo Version</h4>
+    <p class="note">Demo version of DeltaLeaff!</p>
+    <a href="https://gamebanana.com/mods/485775" target="_blank" rel="noopener noreferrer">Open on GameBanana ↗</a>
+    <img src="assets/demo_logo.jpg" class="proj-img">
+    <img src="assets/cottonforest.png" class="proj-img">
+    <img src="assets/racket.png" class="proj-img">
+    <img src="assets/ethan.png" class="proj-img">
+    <img src="assets/battle.png" class="proj-img">
+    <img src="assets/shop.png" class="proj-img">
+    <p class="desc">A demo version of DeltaLeaff, the fangame based on DELTARUNE using the Kristal Engine. This is an outdated version of the game, so it's not something to note in correspondence with any new information.</p>
+  </div>
 
 <div class="proj locked">
   <h4>Under The Castle</h4>
   <p class="note">Kris and Susie explore under the castle in Castle Town!</p>
-  <img src="assets/deltaleaff_demo.png" alt="DeltaLeaff Demo" class="proj-img">
-  <p class="desc">Kris and Susie decide they wish to explore what's underneath the castle in Castle Town.</p>
   <!-- <a href="underthecastle">Visit ↗</a> -->
   <a>Coming soon...</a>
+  <img src="assets/utc.png" class="proj-img">
+  <img src="assets/utcbattle.png" class="proj-img">
+  <img src="assets/utcbattleact.png" class="proj-img">
+  <img src="assets/utcsave.png" class="proj-img">
+  <img src="assets/utcnoelle.png" class="proj-img">
+  <img src="assets/utcfluid.png" class="proj-img">
+  <img src="assets/utcbush.png" class="proj-img">
+  <img src="assets/utcshop.png" class="proj-img">
+  <img src="assets/utcboss.png" class="proj-img">
+  <p class="desc">Kris and Susie decide they wish to explore what's underneath the castle in Castle Town.</p>
 </div>
 
 <div class="proj locked">
   <h4>Deltarune: A Natural World</h4>
   <p class="note">Leaff makes a Dark World in his house!</p>
-  <p class="desc">More centered around my OC than DELTARUNE's story, but still a DELTARUNE fangame.</p>
   <!-- <a href="naturalworld">Visit ↗</a> -->
   <a>Coming soon...</a>
+  <p class="desc">More centered around my OC than DELTARUNE's story, but still a DELTARUNE fangame.</p>
 </div>
 
 <div class="proj locked">
   <h4>Checklist Maker</h4>
   <p class="note">My own checklist maker that I made.</p>
-  <p class="desc">A simple checklist maker that I made for myself.</p>
   <!-- <a href="checklist">Visit ↗</a> -->
   <a>Coming soon...</a>
+  <p class="desc">A simple checklist maker that I made for myself.</p>
 </div>
 </section>
 
