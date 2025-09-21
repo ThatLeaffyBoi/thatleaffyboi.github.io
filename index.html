@@ -98,6 +98,24 @@ main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
   color: var(--muted);
 }
 
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 720px;   /* optional: keep it centered and not too big */
+  margin: 20px auto;
+  aspect-ratio: 16 / 9; /* modern way to keep correct ratio */
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px; /* optional rounded corners */
+}
+
+
 footer{text-align:center;margin-top:40px;color:var(--muted)}
 
 @media (max-width:880px){ ul.nav{display:none} }
@@ -163,7 +181,18 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 <p>If it ain't all that obvious, I draw art, make music, write stories, program things, 3d model, animator in 2d and 3d, and am a game developer! Currently in the process of working on DeltaLeaff, my DELTARUNE fangame!!</p>
 <br>
 <h1 class="title">DeltaLeaff</h1>
-<p>Probably the main reason you're here. DeltaLeaff is a DELTARUNE fangame I've been working on since 7th grade! Yeah that's a while ngl, but yeah I don't think that matters too much! There's been a few different iterations of it, only one actually released (the Demo Version) while the rest are basically distant memories. Many different beta concepts such as tracks, sprites, areas, and ideas have been drawn out or executed, but never released. As of recent, beta/old concepts have been forgotten about, as new concepts have been developed to balance out the gameplay. A demo for DeltaLeaff is located somewhere <a href="./projects/">here</a> and updates (and other stuff) are located <a href="./updates/">here</a>.</p>
+<p>Probably the main reason you're here. DeltaLeaff is a DELTARUNE fangame I've been working on since 7th grade! Yeah that's a while ngl, but yeah I don't think that matters too much! There's been a few different iterations of it, only one actually released (the Demo Version) while the rest are basically distant memories. Many different beta concepts such as tracks, sprites, areas, and ideas have been drawn out or executed, but never released. As of recent, beta/old concepts have been forgotten about, as new concepts have been developed to balance out the gameplay. A link to the DeltaLeaff Demo Version is located <a href="./projects/">here</a> and updates (including other stuff) are located <a href="./updates/">here</a>. Below is a video of old gameplay from the first public release of the Deltaleaff Demo Verion!</p>
+
+<div class="video-container">
+  <iframe 
+    src="https://www.youtube.com/watch?v=yrTVcqYi9_M" 
+    title="DeltaLeaff Demo Version" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>
+
 
 <div class="cta">
 <a class="btn" href="./projects/">View Projects</a>
