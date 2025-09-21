@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LeaffyBoi Checklist</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    h2 {
+      color: yellow;
+      margin-bottom: 20px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 8px 0;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    /* Progress colors/symbols */
+    .p0 { color: red; }
+    .p0::after { content: " [✗]"; color: red; }
+
+    .p1 { color: orange; }
+    .p1::after { content: " [-]"; color: orange; }
+
+    .p2 { color: yellow; }
+    .p2::after { content: " [~]"; color: yellow; }
+
+    .p3 { color: yellowgreen; }
+    .p3::after { content: " [v]"; color: yellowgreen; }
+
+    .p4 { color: lightgreen; }
+    .p4::after { content: " [✓]"; color: lightgreen; }
+
+    /* Task types */
+    .story { color: deepskyblue; }
+    .gui { color: violet; }
+
+    /* Input area */
+    #newTaskForm {
+      margin: 20px 0;
+    }
+    input, select, button {
+      font-size: 16px;
+      padding: 6px;
+      margin: 4px;
+    }
+
+    /* Save/Load buttons */
+    #controls {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>LeaffyBoi Checklist</h2>
+
+  <form id="newTaskForm">
+    <input type="text" id="taskText" placeholder="Task description" required>
+    <select id="taskType">
+      <option value="story">📖 Story</option>
+      <option value="gui">📄 GUI/UI</option>
+    </select>
+    <select id="taskProgress">
+      <option value="0">0% (✗)</option>
+      <option value="1">1–25% (-)</option>
+      <option value="2">26–75% (~)</option>
+      <option value="3">76–99% (v)</option>
+      <option value="4">100% (✓)</option>
+    </select>
+    <button type="submit">Add Task</button>
+  </form>
+
+  <div id="controls">
+    <button id="saveBtn">💾 Save Checklist</button>
+    <input type="file" id="loadFile" accept=".lbcl" style="display:none;">
+    <button id="loadBtn">📂 Load Checklist</button>
+  </div>
+
+  <ul id="taskList"></ul>
+
+  <script>
+    const taskList = document.getElementById("taskList");
+    const form = document.getElementById("newTaskForm");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const text = document.getElementById("taskText").value;
+      const type = document.getElementById("taskType").value;
+      const progress = parseInt(document.getElementById("taskProgress").value);
+
+      addTask(text, type, progress);
+      form.reset();
+    });
+
+    function addTask(text, type, progress) {
+      const li = document.createElement("li");
+      li.textContent = text;
+
+      // Add emoji prefix
+      if (type === "story") {
+        li.textContent = "📖 " + li.textContent;
+        li.classList.add("story");
+      } else if (type === "gui") {
+        li.textContent = "📄 " + li.textContent;
+        li.classList.add("gui");
+      }
+
+      li.dataset.type = type;
+      li.dataset.progress = progress;
+      li.dataset.rawText = text; // store text without emoji
+      updateProgress(li);
+
+      // Cycle progress on click
+      li.addEventListener("click", () => {
+        let p = parseInt(li.dataset.progress);
+        p = (p + 1) % 5;
+        li.dataset.progress = p;
+        updateProgress(li);
+      });
+
+      taskList.appendChild(li);
+    }
+
+    function updateProgress(li) {
+      for (let i = 0; i <= 4; i++) {
+        li.classList.remove("p" + i);
+      }
+      li.classList.add("p" + li.dataset.progress);
+    }
+
+    // --- SAVE FEATURE ---
+    document.getElementById("saveBtn").addEventListener("click", () => {
+      const tasks = [];
+      taskList.querySelectorAll("li").forEach(li => {
+        tasks.push({
+          text: li.dataset.rawText,
+          type: li.dataset.type,
+          progress: li.dataset.progress
+        });
+      });
+
+      const blob = new Blob([JSON.stringify(tasks, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "checklist.lbcl"; // custom extension
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // --- LOAD FEATURE ---
+    document.getElementById("loadBtn").addEventListener("click", () => {
+      document.getElementById("loadFile").click();
+    });
+
+    document.getElementById("loadFile").addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = e => {
+        try {
+          const tasks = JSON.parse(e.target.result);
+          taskList.innerHTML = "";
+          tasks.forEach(t => addTask(t.text, t.type, parseInt(t.progress)));
+        } catch {
+          alert("Invalid .lbcl file!");
+        }
+      };
+      reader.readAsText(file);
+    });
+  </script>
+</body>
+</html>
