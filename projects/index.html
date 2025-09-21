@@ -68,20 +68,18 @@ main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
   text-decoration: none;
   font-weight: 700;
 }
-/* Regular project link hover */
 .proj a:hover {
   color: var(--green);
 }
 
-/* Locked project styling */
 .proj.locked h4 {
   color: red;
   position: relative;
-  padding-right: 16px; /* space for lock icon */
+  padding-right: 16px;
 }
 
 .proj.locked h4::after {
-  content: "✗"; /* lock symbol */
+  content: "✗";
   position: absolute;
   right: 0;
   top: 0;
@@ -89,9 +87,8 @@ main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
   color: red;
 }
 
-/* Locked project link hover */
 .proj.locked a:hover {
-  color: red; /* stays red on hover */
+  color: red;
 }
 
 footer{text-align:center;margin-top:40px;color:var(--muted)}
@@ -102,7 +99,6 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 <body data-page="projects">
 
 <script>
-  // Preload the UI sounds
   const sounds = {
     move: new Audio('assets/sounds/ui_move.wav'),
     select: new Audio('assets/sounds/ui_select.wav'),
@@ -117,13 +113,11 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    // Nav link sounds
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('mouseenter', () => playSound(sounds.move));
       link.addEventListener('click', () => playSound(sounds.select));
     });
 
-    // Button sounds
     document.querySelectorAll('.btn').forEach(btn => {
       btn.addEventListener('mouseenter', () => playSound(sounds.move));
       btn.addEventListener('click', () => playSound(sounds.select));
@@ -158,7 +152,6 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 <p class="lead">Here are some of my projects.</p>
 </section>
 
-<!-- Projects preview section -->
 <section class="projects-preview">
   <div class="proj">
     <h4>DeltaLeaff Demo Version</h4>
@@ -215,7 +208,6 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 </main>
 
 <script>
-  // Automatically set the green underline for the current page
   (function() {
     const page = document.body.dataset.page || 'projects';
     document.querySelectorAll('.nav-link').forEach(a => {

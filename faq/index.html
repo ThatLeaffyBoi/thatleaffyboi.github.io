@@ -71,7 +71,6 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 <body data-page="faq">
 
 <script>
-  // Preload the UI sounds
   const sounds = {
     move: new Audio('assets/sounds/ui_move.wav'),
     select: new Audio('assets/sounds/ui_select.wav'),
@@ -86,13 +85,11 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    // Nav link sounds
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('mouseenter', () => playSound(sounds.move));
       link.addEventListener('click', () => playSound(sounds.select));
     });
 
-    // Button sounds
     document.querySelectorAll('.btn').forEach(btn => {
       btn.addEventListener('mouseenter', () => playSound(sounds.move));
       btn.addEventListener('click', () => playSound(sounds.select));
@@ -147,7 +144,6 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 </footer>
 
 <script>
-  // Set the green underline on the current nav item
   (function() {
     const page = document.body.dataset.page || 'faq';
     document.querySelectorAll('.nav-link').forEach(a => {
