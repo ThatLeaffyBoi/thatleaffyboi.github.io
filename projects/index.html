@@ -63,8 +63,39 @@ main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
 .proj p{margin:0;color:var(--muted);font-size:13px}
 .proj:hover{border-color:rgba(0,200,83,0.18);background:rgba(0,200,83,0.03)}
 
-.proj a {
+.projects-preview {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(640px, 1fr));
+  gap: 40px;
+}
+
+.proj {
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.03);
+  background: rgba(0,0,0,0.15);
   color: var(--white);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.proj:hover {
+  border-color: rgba(0,200,83,0.3);
+  background: rgba(0,200,83,0.05);
+}
+
+.proj-img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  object-fit: cover;
+  aspect-ratio: 16/9;
+}
+
+
+.proj a {
+  color: var(--yellow);
   text-decoration: none;
   font-weight: 700;
 }
@@ -87,8 +118,24 @@ main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
   color: red;
 }
 
+.proj.locked a {
+  color: var(--white)
+}
+
 .proj.locked a:hover {
   color: red;
+}
+
+.proj p.desc {
+  font-size: 16px;
+  color: var(--white);
+  line-height: 4;
+}
+
+.proj p.note {
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
 }
 
 footer{text-align:center;margin-top:40px;color:var(--muted)}
@@ -155,48 +202,39 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 <section class="projects-preview">
   <div class="proj">
     <h4>DeltaLeaff Demo Version</h4>
-    <br>
-    <p>Demo version of DeltaLeaff!</p>
-    <br>
-    <br>
+    <p class="note">Demo version of DeltaLeaff!</p>
+    <p class="desc">A demo version of DeltaLeaff, the fangame based on DELTARUNE using the Kristal Engine.</p>
     <a href="https://gamebanana.com/mods/485775" target="_blank" rel="noopener noreferrer">Open on GameBanana ↗</a>
   </div>
 
 <div class="proj locked">
   <h4>DeltaLeaff</h4>
-  <br>
-  <p>...</p>
-  <br>
-  <br>
+  <p class="note">...</p>
+  <p class="desc">...</p>
   <!-- <a href="deltaleaff">Visit ↗</a> -->
   <a>Coming soon...</a>
 </div>
 
 <div class="proj locked">
   <h4>Under The Castle</h4>
-  <br>
-  <p>Kris and Susie explore under</p>
-  <p>the castle in Castle Town!</p>
-  <br>
+  <p class="note">Kris and Susie explore under the castle in Castle Town!</p>
+  <p class="desc">Kris and Susie decide they wish to explore what's underneath the castle in Castle Town.</p>
   <!-- <a href="underthecastle">Visit ↗</a> -->
   <a>Coming soon...</a>
 </div>
 
 <div class="proj locked">
   <h4>Deltarune: A Natural World</h4>
-  <p>Leaff makes a Dark World</p>
-  <p>in his house!</p>
-  <br>
+  <p class="note">Leaff makes a Dark World in his house!</p>
+  <p class="desc">More centered around my OC than DELTARUNE's story, but still a DELTARUNE fangame.</p>
   <!-- <a href="naturalworld">Visit ↗</a> -->
   <a>Coming soon...</a>
 </div>
 
 <div class="proj locked">
   <h4>Checklist Maker</h4>
-  <br>
-  <p>My own checklist</p>
-  <p>maker that I made.</p>
-  <br>
+  <p class="note">My own checklist maker that I made.</p>
+  <p class="desc">A simple checklist maker that I made for myself.</p>
   <!-- <a href="checklist">Visit ↗</a> -->
   <a>Coming soon...</a>
 </div>
