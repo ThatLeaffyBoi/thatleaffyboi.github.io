@@ -79,13 +79,14 @@ footer a {
   text-decoration: none;
 }
 
+
 footer{text-align:center;margin-top:40px;color:var(--muted)}
 
 @media (max-width:880px){ ul.nav{display:none} }
 </style>
 </head>
 
-<body data-page="updates">
+<body data-page="endurance">
 
 <script>
   const sounds = {
@@ -103,86 +104,21 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
   });
 </script>
 
-<header>
-<div class="header-inner">
-<a class="brand" href="/">
-<img src="assets/logo.png" alt="logo">
-<div>
-<div class="title">LeaffyBoi</div>
-<div class="sub">Artist • Composer • Writer • Programmer • 3D Modeler • Animator • Game Developer</div>
-</div>
-</a>
-
-<nav aria-label="Main navigation">
-<ul class="nav">
-<li><a class="nav-link" data-nav="home" href="/">Home</a></li>
-<li><a class="nav-link" data-nav="projects" href="/projects/">Projects</a></li>
-<li><a class="nav-link" data-nav="faq" href="/faq/">FAQ</a></li>
-<li><a class="nav-link" data-nav="updates" href="/updates/">Updates</a></li>
-</ul>
-</nav>
-</div>
-</header>
-
 <main>
-<section class="hero">
-<h1 class="title">Updates</h1>
-<p class="lead">Updates of projects, the site, life, and some other stuff!</p>
-</section>
+<div class="update-entry" style="text-align:center;">
+  <img src="assets/thomas_hair.gif" 
+       style="width:250px; max-width:100%; display:block; margin:20px auto;">
 
-<section class="updates-container" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:40px; margin-top:40px;">
-  
-  <!-- DeltaLeaff Updates -->
-  <div class="updates-list">
-    <h2 style="color:var(--green); margin-bottom:16px;">DeltaLeaff Updates</h2>
-    <div class="update-entry">
-      <h3>March 5, 2024</h3>
-      <p>DeltaLeaff Demo Version (1.0.0) is updated to DeltaLeaff Demo Version (1.2.0) and released to the public!</p>
-    </div>
-    <div class="update-entry">
-      <h3>December 24, 2023</h3>
-      <p>DeltaLeaff Demo Version (1.0.0) is released to the public!</p>
-    </div>
-  </div>
+  <audio controls style="margin:20px auto; display:block;">
+    <source src="assets/music/Faded.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
-  <!-- Project Updates -->
-  <div class="updates-list">
-    <h2 style="color:var(--yellow); margin-bottom:16px;">Projects' Updates</h2>
-    <div class="update-entry">
-      <h3></h3>
-      <p></p>
-    </div>
-  </div>
-
-  <!-- Other Updates -->
-  <div class="updates-list">
-    <h2 style="color:var(--yellow); margin-bottom:16px;">Other Updates</h2>
-    <div class="update-entry">
-      <h3>September 22, 2025</h3>
-      <p>Fixed up Projects page to be more simplified, similar to Updates page.</p>
-    </div>
-    <div class="update-entry">
-      <h3>September 21, 2025</h3>
-      <p>The website design was finalized and uploaded.</p>
-    </div>
-  </div>
-
-</section>
-
-<footer>
-  <div>Made with love and endurance!</div>
-  <div><h6>© 2025 LeaffyBoi - I don't know lmao</h6></div>
-</footer>
+  <p style="margin-top:20px; color:var(--muted); font-size:24px;">
+    (DO YOU HAVE THE ENDURANCE?)
+  </p>
+</div>
 </main>
-
-<script>
-(function() {
-  const page = document.body.dataset.page || 'updates';
-  document.querySelectorAll('.nav-link').forEach(a => {
-    if(a.dataset.nav === page) a.classList.add('active');
-  });
-})();
-</script>
 
 </body>
 </html>
