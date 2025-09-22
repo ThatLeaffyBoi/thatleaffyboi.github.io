@@ -64,12 +64,12 @@ main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
 .proj:hover{border-color:rgba(0,200,83,0.18);background:rgba(0,200,83,0.03)}
 
 .projects-preview {
-  margin-top: 28px;
   display: grid;
-  grid-template-columns: repeat(3, 400px); /* fixed width for each card */
+  grid-template-columns: repeat(3, 1fr);
   gap: 40px;
-  justify-content: center; /* center the whole grid */
-  border-radius: 10px;
+  align-items: stretch;
+  margin-top: 40px;
+  border-radius: 12px;
 }
 
 .proj {
@@ -125,8 +125,25 @@ main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
   color: red;
 }
 
+.proj h4::after {
+  content: "✓";
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 0.9em;
+  color: green;
+}
+
 .proj.locked a {
   color: var(--white)
+}
+
+.locked {
+  color: red;
+}
+
+.unlocked {
+  color: var(--green)
 }
 
 .proj.locked a:hover {
@@ -206,6 +223,7 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
 <p class="lead">Here are some of my fangames, games, or projects that I'm making!</p>
 </section>
 
+<h2>Main Project</h2>
 <section class="projects-preview">
 <div class="proj locked">
   <h4>DeltaLeaff</h4>
@@ -215,21 +233,27 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
   <br>
   <p class="desc">DeltaLeaff's full game in the form of 25 chapters.</p>
 </div>
+</section>
 
-  <div class="proj blue">
-    <h4>DeltaLeaff Demo Version</h4>
-    <p class="note">Demo version of DeltaLeaff!</p>
-    <a href="https://gamebanana.com/mods/485775" target="_blank" rel="noopener noreferrer">Open on GameBanana ↗</a>
-    <br>
-    <img src="assets/demo_logo.jpg" class="proj-img">
-    <img src="assets/cottonforest.png" class="proj-img">
-    <img src="assets/racket.png" class="proj-img">
-    <img src="assets/ethan.png" class="proj-img">
-    <img src="assets/battle.png" class="proj-img">
-    <img src="assets/shop.png" class="proj-img">
-    <p class="desc">A demo version of DeltaLeaff, the fangame based on DELTARUNE using the Kristal Engine. This is an outdated version of the game, so it's not something to note in correspondence with any new information.</p>
-  </div>
+<h2 class = "unlocked">Completed Projects</h2>
+<section class="projects-preview">
+<div class="proj blue">
+  <h4>DeltaLeaff Demo Version</h4>
+  <p class="note">Outdated demo version of DeltaLeaff!</p>
+  <a href="https://gamebanana.com/mods/485775" target="_blank" rel="noopener noreferrer">Open on GameBanana ↗</a>
+  <br>
+  <img src="assets/demo_logo.jpg" class="proj-img">
+  <img src="assets/cottonforest.png" class="proj-img">
+  <img src="assets/racket.png" class="proj-img">
+  <img src="assets/ethan.png" class="proj-img">
+  <img src="assets/battle.png" class="proj-img">
+  <img src="assets/shop.png" class="proj-img">
+  <p class="desc">A demo version of DeltaLeaff, the fangame based on DELTARUNE using the Kristal Engine. This is an outdated version of the game, so it's not something to note in correspondence with any new information.</p>
+</div>
+</section>
 
+<h2 class = "locked">Incompleted Projects</h2>
+<section class="projects-preview">
 <div class="proj locked">
   <h4>Under The Castle</h4>
   <p class="note">Kris and Susie explore under the castle in Castle Town!</p>
@@ -255,6 +279,18 @@ footer{text-align:center;margin-top:40px;color:var(--muted)}
   <a>Coming soon...</a>
   <br>
   <p class="desc">More centered around my OC than DELTARUNE's story, but still a DELTARUNE fangame.</p>
+</div>
+
+<div class="proj locked">
+  <h4>Deltarune Of Time</h4>
+  <p class="note">Kris and Susie explore the Forest Temple!</p>
+  <!-- <a href="deltaoftime">Visit ↗</a> -->
+  <a>Coming soon...</a>
+  <br>
+  <img src="assets/dotpeace.png" class="proj-img">
+  <img src="assets/dotsave.png" class="proj-img">
+  <img src="assets/dotsusie.png" class="proj-img">
+  <p class="desc">A DELTARUNE fangame where Kris and Susie travel to the Legend of Zelda: Ocarina of Time's Forest Temple. What's even going to happen in this one? Link verses the Roaring Knight maybe??</p>
 </div>
 
 <div class="proj locked">

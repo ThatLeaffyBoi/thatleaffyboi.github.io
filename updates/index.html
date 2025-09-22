@@ -60,10 +60,11 @@ main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
 
 .updates-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 40px;
-  align-items: stretch; /* <-- this makes both columns stretch to the same height */
+  align-items: stretch;
   margin-top: 40px;
+  border-radius: 12px;
 }
 .updates-list {
   display: flex;
