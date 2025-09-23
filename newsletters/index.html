@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>LeaffyBoi — Updates</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<meta name="description" content="LeaffyBoi — updates and progress logs" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="assets/greater-determination-sans.ttf" rel="stylesheet">
+
+<style>
+@font-face {
+    font-family: 'Greater Determination Sans';
+    src: url('assets/greater-determination-sans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+</style>
+<style>
+:root {
+  --bg:#000000;
+  --green:#00c853;
+  --yellow:#ffd400;
+  --white:#ffffff;
+  --muted:#9fb0b0;
+  --maxw:1100px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  font-family: 'Greater Determination Sans', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background:var(--bg);
+  color:var(--white);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+header{position:fixed;left:0;right:0;top:0;padding:12px 18px;background:rgba(0,0,0,0.75);border-bottom:1px solid rgba(255,255,255,0.04);z-index:60}
+.header-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.brand img{height:auto;width:auto;border-radius:6px;max-height:50px}
+.brand .title{font-weight:700;font-size:14px}
+.brand .sub{font-size:11px;color:var(--muted)}
+
+nav{margin-left:auto}
+ul.nav{display:flex;gap:8px;align-items:center;margin:0;padding:0;list-style:none}
+a.nav-link{display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--white);font-weight:700;font-size:13px}
+a.nav-link:hover{color:var(--green)}
+a.nav-link.active{box-shadow:inset 0 -2px 0 var(--green)}
+
+main{max-width:var(--maxw);margin:110px auto 80px;padding:0 20px}
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:72px 22px}
+.title{font-size:44px;font-weight:800;letter-spacing:2px;margin:0}
+.lead{margin-top:14px;color:var(--muted);max-width:70ch;font-size:15px;line-height:1.6}
+
+.newsletter-list{margin-top:40px;display:flex;flex-direction:column;gap:20px}
+.newsletter-entry{
+  background: rgba(0,200,83,0.05);
+  padding: 18px;
+  border-radius: 12px;
+  transition: background 0.2s;
+
+  /* CENTER CONTENT */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.newsletter-entry:hover{
+  background: rgba(0,200,83,0.12);
+}
+.newsletter-entry h2,
+.newsletter-entry p,
+.newsletter-entry a {
+  margin: 0;
+}
+.newsletter-entry a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.newsletter-entry:hover{background:rgba(0,200,83,0.12)}
+.newsletter-entry h2{margin:0 0 6px;font-size:20px;color:var(--green);text-align:center}
+.newsletter-entry p{margin:0;font-size:14px;color:var(--muted);text-align:center}
+.newsletter-entry a{color:var(--white);text-decoration:none;display:block;text-align:center}
+
+footer{text-align:center;margin-top:40px;color:var(--muted)}
+footer a{color:inherit;text-decoration:none}
+
+@media (max-width:880px){ ul.nav{display:none} }
+</style>
+</head>
+
+<body data-page="newsletter">
+
+<header>
+  <div class="header-inner">
+    <a class="brand" href="/">
+      <img src="assets/logo.png" alt="logo">
+      <div>
+        <div class="title">LeaffyBoi</div>
+        <div class="sub">Artist • Composer • Writer • Programmer • 3D Modeler • Animator • Game Developer</div>
+      </div>
+    </a>
+    <nav aria-label="Main navigation">
+      <ul class="nav">
+        <li><a class="nav-link" data-nav="home" href="/">Home</a></li>
+        <li><a class="nav-link" data-nav="projects" href="/projects/">Projects</a></li>
+        <li><a class="nav-link" data-nav="faq" href="/faq/">FAQ</a></li>
+        <li><a class="nav-link" data-nav="newsletter" href="/newsletter/">Newsletter</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1 class="title">Newsletter</h1>
+    <p class="lead">List of newsletters, simply just updates on anything.</p>
+  </section>
+
+  <section class="newsletter-list">
+    <div class="newsletter-entry">
+      <a href="/newsletter/2025-09-22/">
+        <h2>2025 ↗</h2>
+        <p class="lead">Overview of 2025's newsletters so far.</p>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div>Made with love and <a href="/endurance/">endurance!</a></div>
+    <div><h6>© 2025 LeaffyBoi - I don't know lmao</h6></div>
+  </footer>
+</main>
+
+<script>
+(function() {
+  const page = document.body.dataset.page || 'newsletter';
+  document.querySelectorAll('.nav-link').forEach(a => {
+    if(a.dataset.nav === page) a.classList.add('active');
+  });
+})();
+</script>
+
+</body>
+</html>
