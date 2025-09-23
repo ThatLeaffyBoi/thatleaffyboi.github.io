@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>LeaffyBoi — Updates</title>
+<title>LeaffyBoi — Newsletters</title>
 <link rel="icon" type="image/png" href="assets/logo.png">
-<meta name="description" content="LeaffyBoi — updates and progress logs" />
+<meta name="description" content="LeaffyBoi — newsletters" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <link href="assets/greater-determination-sans.ttf" rel="stylesheet">
 
@@ -94,7 +94,34 @@ footer a{color:inherit;text-decoration:none}
 </style>
 </head>
 
-<body data-page="newsletter">
+<body data-page="newsletters">
+
+<script>
+  const sounds = {
+    move: new Audio('assets/sounds/ui_move.wav'),
+    select: new Audio('assets/sounds/ui_select.wav'),
+    cant: new Audio('assets/sounds/ui_cant_select.wav')
+  };
+
+  function playSound(sound) {
+    if (sound && sound.play) {
+      sound.currentTime = 0;
+      sound.play();
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('mouseenter', () => playSound(sounds.move));
+      link.addEventListener('click', () => playSound(sounds.select));
+    });
+
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('mouseenter', () => playSound(sounds.move));
+      btn.addEventListener('click', () => playSound(sounds.select));
+    });
+  });
+</script>
 
 <header>
   <div class="header-inner">
@@ -110,7 +137,7 @@ footer a{color:inherit;text-decoration:none}
         <li><a class="nav-link" data-nav="home" href="/">Home</a></li>
         <li><a class="nav-link" data-nav="projects" href="/projects/">Projects</a></li>
         <li><a class="nav-link" data-nav="faq" href="/faq/">FAQ</a></li>
-        <li><a class="nav-link" data-nav="newsletter" href="/newsletter/">Newsletter</a></li>
+        <li><a class="nav-link" data-nav="newsletters" href="/newsletters/">Newsletters</a></li>
       </ul>
     </nav>
   </div>
